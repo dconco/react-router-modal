@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import { Text } from './components/component.style'
 import './index.css'
-
 
 /* Styles without syled-components */
 const styles = {
@@ -29,14 +27,11 @@ function App({ name }) {
     return (
         <>
             <div style={styles.div}>
-                <h1 style={styles.h1}>Hello {name}, Welcome to BetLightening Tips!</h1>
+                <h1 style={styles.h1}>Hello {name}, Welcome to React Router Modal!</h1>
             </div>
             
             <br/>
             <button onClick={() => Exec(1)}>Click Me: {num}</button>
-            <br />
-            <br />
-            <Text color='yellow'>This is a footer nav designed with React Styled-Component</Text>
         </>
     )
 }

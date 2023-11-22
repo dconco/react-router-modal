@@ -7,11 +7,11 @@ module.exports = {
     entry: './src/index.jsx',
     output: {
         filename: 'bundle.js',
-        path: path.resolve('../www'),
+        path: path.resolve('../build'),
     },
     module: {
         rules: [{
-                test: /\.(js|jsx)$/,
+                test: /\.(js|jsx|ts|tsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -25,7 +25,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|jpe?g|gif|svg)$/,
+                test: /\.(png|jpe?g|gif|svg|webp)$/,
                 use: [{
                     loader: 'file-loader',
                     options: {
@@ -41,7 +41,7 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            title: 'BetLightening Tips',
+            title: 'React Router Modal',
             template: './public/index.html'
         }),
 
@@ -57,6 +57,6 @@ module.exports = {
         port: 3000,
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
     }
 }

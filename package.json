@@ -1,15 +1,19 @@
 {
-    "name": "BetLightening Tips",
+    "name": "React Router Modal",
     "version": "1.0.0",
-    "description": "Unlock the secrets to betting success with our expert tips and predictions 🏆",
+    "description": "This is a custom react router built to navigates between pages but in one page, just to change the components rendering to the web, and update it with new components.",
     "main": "index.jsx",
     "scripts": {
         "dev": "webpack serve --mode development",
         "build": "webpack --mode production",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "keywords": [],
-    "author": "BetLightening Tips",
+    "keywords": "react, router, modal, react-router, react-modal",
+    "author": [
+        "name": "Dave Conco, Kig Emmanuel",
+        "email": "concodave@gmail.com",
+        "url": "https://github.com/dconco/react-router-modal"
+    ],
     "license": "ISC",
     "dependencies": {
         "@ionic/react": "^7.5.3",
@@ -17,8 +21,7 @@
         "html-webpack-plugin": "^5.5.3",
         "mini-css-extract-plugin": "^2.7.6",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "styled-components": "^6.1.0"
+        "react-dom": "^18.2.0"
     },
     "devDependencies": {
         "@babel/core": "^7.23.2",
