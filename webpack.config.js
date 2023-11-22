@@ -7,7 +7,7 @@ module.exports = {
     entry: './src/index.jsx',
     output: {
         filename: 'bundle.js',
-        path: path.resolve('../build'),
+        path: path.resolve('./build'),
     },
     module: {
         rules: [{

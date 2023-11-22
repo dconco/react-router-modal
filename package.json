@@ -9,15 +9,13 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": "react, router, modal, react-router, react-modal",
-    "author": [
+    "author": {
         "name": "Dave Conco, Kig Emmanuel",
         "email": "concodave@gmail.com",
         "url": "https://github.com/dconco/react-router-modal"
-    ],
+    },
     "license": "ISC",
     "dependencies": {
-        "@ionic/react": "^7.5.3",
-        "@ionic/react-router": "^7.5.3",
         "html-webpack-plugin": "^5.5.3",
         "mini-css-extract-plugin": "^2.7.6",
         "react": "^18.2.0",
