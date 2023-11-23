@@ -1,12 +1,31 @@
-button {
-    cursor: pointer;
-    color: #fff;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    font-size: 35px;
-    padding: 30px 55px;
-    background-color: green;
-    border: none
+* {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #E4E4E4;
+    font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 12px;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    /* Padding to avoid the "unsafe" areas behind notches in the screen */
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+    width: 100%;
+}
+
+
+/* Landscape layout (with min-width) */
+
+@media screen and (min-aspect-ratio: 1/1) and (min-width: 400px) {}
+
+
+/* For App dark theme */
+
+@media screen and (prefers-color-scheme: dark) {
+    body {
+        background: #333333;
+    }
 }

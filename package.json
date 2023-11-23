@@ -1,5 +1,5 @@
 {
-    "name": "React Router Modal",
+    "name": "react-router-modal",
     "version": "1.0.0",
     "description": "This is a custom react router built to navigates between pages but in one page, just to change the components rendering to the web, and update it with new components.",
     "main": "index.jsx",
@@ -8,7 +8,13 @@
         "build": "webpack --mode production",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "keywords": "react, router, modal, react-router, react-modal",
+    "keywords": [
+        "react",
+        "router",
+        "modal",
+        "react-router",
+        "react-modal"
+    ],
     "author": {
         "name": "Dave Conco, Kig Emmanuel",
         "email": "concodave@gmail.com",
