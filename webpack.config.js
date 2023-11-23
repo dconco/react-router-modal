@@ -57,6 +57,10 @@ module.exports = {
         port: 3000,
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx']
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        alias: {
+            // Alias the storage API to the appropriate module
+            'storage': 'web-storage-api'
+        }
     }
 }

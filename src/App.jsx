@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './index.css'
+import './App.css'
 
 /* Styles without syled-components */
 const styles = {
@@ -15,15 +15,7 @@ const styles = {
     }
 }
 
-function App({ name }) {
-    const [num, setNum] = useState(0)
-
-    const Exec = (arg) => {
-        setNum(num + arg)
-        window.alert(`You clicked the button ${num} times`)
-    }
-    
-    /* Return JSX output to DOM */
+function App({ name, next }) {
     return (
         <>
             <div style={styles.div}>
@@ -31,7 +23,7 @@ function App({ name }) {
             </div>
             
             <br/>
-            <button onClick={() => Exec(1)}>Click Me: {num}</button>
+            <button onClick={ () => next('current-page', '/login') }>Go to Login Page</button>
         </>
     )
 }

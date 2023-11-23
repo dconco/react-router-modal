@@ -1,9 +1,8 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import Router from './Router'
 
-// import custom external files
-import App from './App'
-import './App.css'
+import './index.css'
 
 const Root = createRoot(document.getElementById('root'))
-Root.render(<App name={'Dave'} />)
+Root.render(<Router />)
