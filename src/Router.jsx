@@ -1,41 +1,17 @@
-import React, { createContext, useContext, useState } from 'react'
+import React from 'react'
+import RouterModalProvider, { useRouterStorage } from './components/RouterProvider'
+
 import App from './App'
 import Login from './pages/Login'
 
-const SessionStorageContext = createContext()
 
-const SessionStorageProvider = ({ children }) => {
-    const [sessionStorageValue, setSessionStorageValue] = useState(
-        sessionStorage.getItem('current-page') || '/'
-    )
-
-    const updateSessionStorage = (key, value) => {
-        sessionStorage.setItem(key, value)
-        setSessionStorageValue(value)
-    }
-
-    return (
-        <SessionStorageContext.Provider value={{ sessionStorageValue, updateSessionStorage }}>
-            {children}
-        </SessionStorageContext.Provider>
-    )
-}
-
-const useSessionStorage = () => {
-    const context = useContext(SessionStorageContext)
-    if (!context) {
-        throw new Error('useSessionStorage must be used within a SessionStorageProvider')
-    }
-    return context
-}
-
-
+// Define all your routes here
 const Route = () => {
-    const { sessionStorageValue, updateSessionStorage } = useSessionStorage()
+    const { routerPath } = useRouterStorage()
 
-    switch (sessionStorageValue) {
+    switch (routerPath) {
         case '/':
-            return <App name={'Dave'} next={updateSessionStorage} />
+            return <App name={'Dave'} />
         
         case '/login':
             return <Login />
@@ -45,11 +21,12 @@ const Route = () => {
     }
 }
 
+// Render routes to Page
 const Router = () => {
     return (
-        <SessionStorageProvider>
+        <RouterModalProvider>
             <Route />
-        </SessionStorageProvider>
+        </RouterModalProvider>
     )
 }
 

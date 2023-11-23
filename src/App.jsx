@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './App.css'
 
 /* Styles without syled-components */
@@ -23,7 +23,7 @@ function App({ name, next }) {
             </div>
             
             <br/>
-            <button onClick={ () => next('current-page', '/login') }>Go to Login Page</button>
+            <button onClick={ () => next('/login') }>Go to Login Page</button>
         </>
     )
 }
