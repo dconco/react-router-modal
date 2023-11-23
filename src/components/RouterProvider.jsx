@@ -5,21 +5,21 @@ const [routerPath, setRouterPath] = useState('/')
 
 const RouterModalProvider = ({ children }) => {
     return (
-        <SessionStorageContext.Provider value={{ routerPath }}>
+        <RouterContext.Provider value={{ routerPath }}>
             {children}
-        </SessionStorageContext.Provider>
+        </RouterContext.Provider>
     )
 }
 
 const RouterModal = (url) => setRouterPath(url)
 
-const useRouterStorage = () => {
+const useRouterModal = () => {
     const context = useContext(RouterContext)
     if (!context) {
-        throw new Error('useRouterStorage must be used within a RouterModalProvider')
+        throw new Error('useRouterModal must be used within a RouterModalProvider')
     }
     return context
 }
 
 export default RouterModalProvider
-export { useRouterStorage, RouterModal }
+export { useRouterModal, RouterModal }

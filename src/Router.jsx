@@ -1,5 +1,5 @@
 import React from 'react'
-import RouterModalProvider, { useRouterStorage } from './components/RouterProvider'
+import RouterModalProvider, { useRouterModal } from './components/RouterProvider'
 
 import App from './App'
 import Login from './pages/Login'
@@ -7,7 +7,7 @@ import Login from './pages/Login'
 
 // Define all your routes here
 const Route = () => {
-    const { routerPath } = useRouterStorage()
+    const { routerPath } = useRouterModal() // get route path 
 
     switch (routerPath) {
         case '/':
@@ -24,9 +24,13 @@ const Route = () => {
 // Render routes to Page
 const Router = () => {
     return (
-        <RouterModalProvider>
+        <>
+        { /*<RouterModalProvider>
             <Route />
-        </RouterModalProvider>
+        </RouterModalProvider>*/ }
+        
+        <h1>Hello</h1>
+        </>
     )
 }
 

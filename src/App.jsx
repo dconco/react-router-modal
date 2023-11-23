@@ -1,5 +1,8 @@
 import React from 'react'
+import { RouterModal } from './components/RouterProvider'
 import './App.css'
+
+/* use RouterModal function to set Path for the router to redirect to */
 
 /* Styles without syled-components */
 const styles = {
@@ -15,7 +18,7 @@ const styles = {
     }
 }
 
-function App({ name, next }) {
+function App({ name }) {
     return (
         <>
             <div style={styles.div}>
@@ -23,7 +26,7 @@ function App({ name, next }) {
             </div>
             
             <br/>
-            <button onClick={ () => next('/login') }>Go to Login Page</button>
+            <button onClick={ () => RouterModal('/login') }>Go to Login Page</button>
         </>
     )
 }
