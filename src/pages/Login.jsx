@@ -1,11 +1,32 @@
-import React from 'react';
+import React from 'react'
+import { useRouter } from '../components/RouterProvider'
+import '../components/animate.css'
 
-const Login = () => {
-    return (
-        <div>
-            <h2>Login Page</h2>
-        </div>
-    );
+const styles = {
+    div: {
+        margin: 10,
+        padding: 30,
+        textAlign: 'center',
+        backgroundColor: 'green',
+    },
+    h1: {
+        color: 'white',
+    },
 }
 
-export default Login;
+function Login() {
+    const { setRouterPath } = useRouter() // set the route path to redirect to
+
+    return (
+        <div animate='router-zoom-out'>
+            <div style={styles.div}>
+                <h1 style={styles.h1}>Welcome Back!</h1>
+            </div>
+
+            <br />
+            <button onClick={ () => setRouterPath('/') }>Home Page</button>
+        </div>
+    )
+}
+
+export default Login

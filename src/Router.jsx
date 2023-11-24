@@ -3,6 +3,7 @@ import RouterModalProvider, { useRouterModal } from './components/RouterProvider
 
 import App from './App'
 import Login from './pages/Login'
+import './components/animate.css'
 
 
 /**
@@ -18,11 +19,11 @@ const Route = () => {
 
     switch (routerPath) {
         case '/':
-            return <App name={'Dave'} />
+            return <App name='Dave' />
         
         case '/login':
-            return <Login />
-            
+            return <Login animate />
+        
         default:
             return <h2>404 | Page not Found</h2>
     }
