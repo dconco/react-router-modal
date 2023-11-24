@@ -5,9 +5,16 @@ import App from './App'
 import Login from './pages/Login'
 
 
-// Define all your routes here
+/**
+ * The `Route` function returns different components based on the value of `routerPath`.
+ * @returns The function `Route` returns a React component based on the value of `routerPath`. If
+ * `routerPath` is `'/'`, it returns the `App` component`. 
+ * If `routerPath` is `'/login'`, it returns the `Login` component. Otherwise, it returns a 404 Page
+ * 
+ * Define all your routes.
+*/
 const Route = () => {
-    const { routerPath } = useRouterModal() // get route path 
+    const { routerPath } = useRouterModal()
 
     switch (routerPath) {
         case '/':
@@ -24,13 +31,9 @@ const Route = () => {
 // Render routes to Page
 const Router = () => {
     return (
-        <>
-        { /*<RouterModalProvider>
+        <RouterModalProvider>
             <Route />
-        </RouterModalProvider>*/ }
-        
-        <h1>Hello</h1>
-        </>
+        </RouterModalProvider>
     )
 }
 

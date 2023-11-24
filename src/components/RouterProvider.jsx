@@ -1,17 +1,22 @@
-import React, { createContext, useContext, useState } from "react"
+import React, { createContext, useContext, useEffect, useState } from "react"
+import { useBetween } from "use-between"
 
 const RouterContext = createContext()
-const [routerPath, setRouterPath] = useState('/')
+
+const useRouterPath = () => {
+    const [routerPath, setRouterPath] = useState('/')
+    return { routerPath, setRouterPath }
+}
 
 const RouterModalProvider = ({ children }) => {
+    const { routerPath } = useBetween(useRouterPath)
+
     return (
         <RouterContext.Provider value={{ routerPath }}>
             {children}
         </RouterContext.Provider>
     )
 }
-
-const RouterModal = (url) => setRouterPath(url)
 
 const useRouterModal = () => {
     const context = useContext(RouterContext)
@@ -21,5 +26,12 @@ const useRouterModal = () => {
     return context
 }
 
+const useRouter = () => {
+    const { setRouterPath } = useBetween(useRouterPath)
+    return { setRouterPath }
+}
+
+// const RouterModal = (url) => setRouterPath(url ? url : '')
+
 export default RouterModalProvider
-export { useRouterModal, RouterModal }
+export { useRouterPath, useRouterModal, useRouter  }
