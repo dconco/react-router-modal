@@ -5,7 +5,6 @@ import App from './App'
 import Login from './pages/Login'
 import './components/animate.css'
 
-
 /**
  * The `Route` function returns different components based on the value of `routerPath`.
  * @returns The function `Route` returns a React component based on the value of `routerPath`. If
