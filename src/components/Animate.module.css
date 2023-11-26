@@ -74,36 +74,36 @@
 }
 
 .routerFade {
-    transition: all .5s ease-in-out;
-    animation: fade .3s ease-in-out;
+    transition: all .5s ease-in-out !important;
+    animation: fade .3s ease-in-out !important;
 }
 
 .routerSlideLeft {
-    transition: all .5s ease-in-out;
-    animation: slide-left .3s ease-in-out;
+    transition: all .5s ease-in-out !important;
+    animation: slide-left .3s ease-in-out !important;
 }
 
 .routerSlideRight {
-    transition: all .5s ease-in-out;
-    animation: slide-right .3s ease-in-out;
+    transition: all .5s ease-in-out !important;
+    animation: slide-right .3s ease-in-out !important;
 }
 
 .routerSlideUp {
-    transition: all .5s ease-in-out;
-    animation: slide-up .3s ease-in-out;
+    transition: all .5s ease-in-out !important;
+    animation: slide-up .3s ease-in-out !important;
 }
 
 .routerSlideDown {
-    transition: all .5s ease-in-out;
-    animation: slide-down .3s ease-in-out;
+    transition: all .5s ease-in-out !important;
+    animation: slide-down .3s ease-in-out !important;
 }
 
 .routerZoomIn {
-    transition: all .5s ease-in-out;
-    animation: zoom-in .3s ease-in-out;
+    transition: all .5s ease-in-out !important;
+    animation: zoom-in .3s ease-in-out !important;
 }
 
 .routerZoomOut {
-    transition: all .5s ease-in-out;
-    animation: zoom-out .3s ease-in-out;
+    transition: all .5s ease-in-out !important;
+    animation: zoom-out .3s ease-in-out !important;
 }

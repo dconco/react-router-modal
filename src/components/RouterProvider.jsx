@@ -46,10 +46,14 @@ const SwitchRoutes = ({ children }) => {
     Children.forEach(children, child => {
         const path = child.props.path
 
+        // This function here, removes the front & back slashes in the url
+        const routerPathFilter = (routerPath) ? routerPath.replace(/^\/+|\/+$/g, '') : routerPath
+        const pathFilter = (typeof path != 'object' && path) ? path.replace(/^\/+|\/+$/g, '') : path
+
         if (typeof path == 'object' && path.includes(routerPath)) {
             component = cloneElement(child)
         }
-        else if (routerPath === path || path === '*' || !path) {
+        else if (routerPathFilter === pathFilter || pathFilter === '*' || !path) {
             component = cloneElement(child)
         }
     })

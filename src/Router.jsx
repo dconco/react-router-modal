@@ -11,7 +11,7 @@ const Router = () => {
         <RouterModalProvider>
             <SwitchRoutes>
                 <RouteModal component={<h2>404 | Not Found</h2>} />
-                <RouteModal path={['/', '/index']} component={<App />} animate={routerFade} />
+                <RouteModal path={['/', '/index']} component={<App name={'Dave'} />} animate={routerFade} />
                 <RouteModal path={'/login'} component={<Login />} animate={routerSlideLeft} />
             </SwitchRoutes>
         </RouterModalProvider>
