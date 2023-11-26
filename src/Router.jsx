@@ -1,5 +1,5 @@
 import React from 'react'
-import RouterModalProvider, { SwitchRoutes, RouteModal } from './components/RouterProvider'
+import RouterModalProvider, { SwitchRoutes, RouteModal, routerFade, routerSlideLeft } from './components/RouterProvider'
 
 import App from './App'
 import Login from './pages/Login'
@@ -11,8 +11,8 @@ const Router = () => {
         <RouterModalProvider>
             <SwitchRoutes>
                 <RouteModal component={<h2>404 | Not Found</h2>} />
-                <RouteModal path={['/', '/index']} component={<App />} animate='router-fade' />
-                <RouteModal path={'/login'} component={<Login />} animate='router-slide-left' />
+                <RouteModal path={['/', '/index']} component={<App />} animate={routerFade} />
+                <RouteModal path={'/login'} component={<Login />} animate={routerSlideLeft} />
             </SwitchRoutes>
         </RouterModalProvider>
     )

@@ -57,47 +57,58 @@ const SwitchRoutes = ({ children }) => {
 }
 
 const RouteModal = ({ path, component, animate }) => {
-    let routerAnimate = ['']
-    let animateValue = ''
+    if (typeof animate == 'string') {
+        let routerAnimate = ['']
+        let animateValue = ''
 
-    if (animate !== true && animate !== undefined) {
-        routerAnimate = animate.includes('-') ? animate.split('-') : [animate]
-    }
-
-    routerAnimate.forEach((val, index) => {
-        if (index == 0) {
-            animateValue = val
-        } else {
-            animateValue += val[0].toUpperCase() + val.substring(1, val.length)
+        if (animate !== true && animate !== undefined) {
+            routerAnimate = animate.includes('-') ? animate.split('-') : [animate]
         }
-    })
 
-    switch (animateValue) {
-        case 'routerFade':
-            animate = animations.routerFade
-            break;
-        case 'routerSlideLeft':
-            animate = animations.routerSlideLeft
-            break;
-        case 'routerSlideRight':
-            animate = animations.routerSlideRight
-            break;
-        case 'routerSlideUp':
-            animate = animations.routerSlideUp
-            break;
-        case 'routerSlideDown':
-            animate = animations.routerSlideDown
-            break;
-        case 'routerZoomIn':
-            animate = animations.routerZoomIn
-            break;
-        case 'routerZoomOut':
-            animate = animations.routerZoomOut
-            break;
+        routerAnimate.forEach((val, index) => {
+            if (index == 0) {
+                animateValue = val
+            } else {
+                animateValue += val[0].toUpperCase() + val.substring(1, val.length)
+            }
+        })
 
-        default:
-            animate = animations.routerFade
-            break;
+        switch (animateValue) {
+            case 'routerFade':
+                animate = animations.routerFade
+                break;
+            case 'routerSlideLeft':
+                animate = animations.routerSlideLeft
+                break;
+            case 'routerSlideRight':
+                animate = animations.routerSlideRight
+                break;
+            case 'routerSlideUp':
+                animate = animations.routerSlideUp
+                break;
+            case 'routerSlideDown':
+                animate = animations.routerSlideDown
+                break;
+            case 'routerZoomIn':
+                animate = animations.routerZoomIn
+                break;
+            case 'routerZoomOut':
+                animate = animations.routerZoomOut
+                break;
+
+            default:
+                animate = animations.routerFade
+                break;
+        }
+    }
+    else {
+        let animateObject = animations.routerFade
+
+        if (animate !== true && animate !== undefined) {
+            animateObject = animate
+        }
+
+        animate = animateObject()
     }
 
     return (
@@ -107,11 +118,45 @@ const RouteModal = ({ path, component, animate }) => {
     )
 }
 
+const Fade = () => animations.routerFade || 'router-fade'
+const SlideLeft = () => animations.routerSlideLeft || 'router-slide-left'
+const SlideRight = () => animations.routerSlideRight || 'router-slide-right'
+const SlideUp = () => animations.routerSlideUp || 'router-slide-up'
+const SlideDown = () => animations.routerSlideDown || 'router-slide-down'
+const ZoomIn = () => animations.routerZoomIn || 'router-zoom-in'
+const ZoomOut = () => animations.routerZoomOut || 'router-zoom-out'
+
+const Animation = {
+    routerFade: () => Fade(),
+    routerSlideLeft: () => SlideLeft(),
+    routerSlideRight: () => SlideRight(),
+    routerSlideUp: () => SlideUp(),
+    routerSlideDown: () => SlideDown(),
+    routerZoomIn: () => ZoomIn(),
+    routerZoomOut: () => ZoomOut()
+}
+
+const routerFade = () => Fade()
+const routerSlideLeft = () => SlideLeft()
+const routerSlideRight = () => SlideRight()
+const routerSlideUp = () => SlideUp()
+const routerSlideDown = () => SlideDown()
+const routerZoomIn = () => ZoomIn()
+const routerZoomOut = () => ZoomOut()
+
 
 export default RouterModalProvider
 export {
     useRouterModal,
     useRouter,
     SwitchRoutes,
-    RouteModal
+    RouteModal,
+    Animation,
+    routerFade,
+    routerSlideLeft,
+    routerSlideRight,
+    routerSlideUp,
+    routerSlideDown,
+    routerZoomIn,
+    routerZoomOut
 }
