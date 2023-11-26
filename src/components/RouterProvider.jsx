@@ -3,7 +3,6 @@ import React, {
     cloneElement,
     createContext,
     useContext,
-    useEffect,
     useState
 } from "react"
 import { useBetween } from "use-between"
@@ -12,7 +11,7 @@ import animations from './Animate.module.css'
 const RouterContext = createContext()
 
 const useRouterPath = () => {
-    const [routerPath, setRouterPath] = useState('/')
+    const [routerPath, setRouterPath] = useState(location.pathname)
     return { routerPath, setRouterPath }
 }
 
@@ -39,6 +38,7 @@ const useRouter = () => {
     return { routerPath, setRouterPath }
 }
 
+/* switch routes depending on the giving path of child props */
 const SwitchRoutes = ({ children }) => {
     const { routerPath } = useRouterModal()
     let component = <div />
@@ -46,7 +46,10 @@ const SwitchRoutes = ({ children }) => {
     Children.forEach(children, child => {
         const path = child.props.path
 
-        if (routerPath.includes(path) || !path) {
+        if (typeof path == 'object' && path.includes(routerPath)) {
+            component = cloneElement(child)
+        }
+        else if (routerPath === path || path === '*' || !path) {
             component = cloneElement(child)
         }
     })
@@ -54,8 +57,12 @@ const SwitchRoutes = ({ children }) => {
 }
 
 const RouteModal = ({ path, component, animate }) => {
-    let routerAnimate = animate.split('-')
+    let routerAnimate = ['']
     let animateValue = ''
+
+    if (animate !== true && animate !== undefined) {
+        routerAnimate = animate.includes('-') ? animate.split('-') : [animate]
+    }
 
     routerAnimate.forEach((val, index) => {
         if (index == 0) {
@@ -93,13 +100,11 @@ const RouteModal = ({ path, component, animate }) => {
             break;
     }
 
-    // useEffect(() => {
     return (
-        <div className={animate}>
+        <div key={Math.random()} className={animate}>
             {component}
-        </div >
+        </div>
     )
-    // }, [])
 }
 
 

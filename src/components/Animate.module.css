@@ -75,35 +75,35 @@
 
 .routerFade {
     transition: all .5s ease-in-out;
-    animation: .3s fade;
+    animation: fade .3s ease-in-out;
 }
 
 .routerSlideLeft {
     transition: all .5s ease-in-out;
-    animation: .3s slide-left;
+    animation: slide-left .3s ease-in-out;
 }
 
 .routerSlideRight {
     transition: all .5s ease-in-out;
-    animation: .3s slide-right;
+    animation: slide-right .3s ease-in-out;
 }
 
 .routerSlideUp {
     transition: all .5s ease-in-out;
-    animation: .3s slide-up;
+    animation: slide-up .3s ease-in-out;
 }
 
 .routerSlideDown {
     transition: all .5s ease-in-out;
-    animation: .3s slide-down;
+    animation: slide-down .3s ease-in-out;
 }
 
 .routerZoomIn {
     transition: all .5s ease-in-out;
-    animation: .3s zoom-in;
+    animation: zoom-in .3s ease-in-out;
 }
 
 .routerZoomOut {
     transition: all .5s ease-in-out;
-    animation: .3s zoom-out;
+    animation: zoom-out .3s ease-in-out;
 }
