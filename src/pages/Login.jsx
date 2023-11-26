@@ -1,6 +1,5 @@
 import React from 'react'
 import { useRouter } from '../components/RouterProvider'
-import '../components/animate.css'
 
 const styles = {
     div: {
@@ -18,13 +17,13 @@ function Login() {
     const { setRouterPath } = useRouter() // set the route path to redirect to
 
     return (
-        <div animate='router-slide-down'>
+        <div>
             <div style={styles.div}>
                 <h1 style={styles.h1}>Welcome Back!</h1>
             </div>
 
             <br />
-            <button onClick={ () => setRouterPath('/') }>Home Page</button>
+            <button onClick={() => setRouterPath('/')}>Home Page</button>
         </div>
     )
 }

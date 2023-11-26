@@ -73,37 +73,37 @@
     }
 }
 
-*[animate=router-fade] {
+.routerFade {
     transition: all .5s ease-in-out;
     animation: .3s fade;
 }
 
-*[animate=router-slide-left] {
+.routerSlideLeft {
     transition: all .5s ease-in-out;
     animation: .3s slide-left;
 }
 
-*[animate=router-slide-right] {
+.routerSlideRight {
     transition: all .5s ease-in-out;
     animation: .3s slide-right;
 }
 
-*[animate=router-slide-up] {
+.routerSlideUp {
     transition: all .5s ease-in-out;
     animation: .3s slide-up;
 }
 
-*[animate=router-slide-down] {
+.routerSlideDown {
     transition: all .5s ease-in-out;
     animation: .3s slide-down;
 }
 
-*[animate=router-zoom-in] {
+.routerZoomIn {
     transition: all .5s ease-in-out;
     animation: .3s zoom-in;
 }
 
-*[animate=router-zoom-out] {
+.routerZoomOut {
     transition: all .5s ease-in-out;
     animation: .3s zoom-out;
 }
