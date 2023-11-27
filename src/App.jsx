@@ -1,7 +1,6 @@
 import React from 'react'
 import { useRouter } from './components/RouterProvider'
 import './App.css'
-import './components/styles/tailwind.css'
 
 const styles = {
     div: {
@@ -19,9 +18,13 @@ function App({ name }) {
     const { setRouterPath } = useRouter() // set the route path to redirect to
 
     return (
-        <div className="container mx-auto p-4">
-            <span className="text-4xl font-bold mb-4">My Tailwind CSS React App</span>
-            {/* Add your components and content here */}
+        <div>
+            <div style={styles.div}>
+                <h1 style={styles.h1}>Hello {name}, Welcome to React Router Modal Site</h1>
+            </div>
+
+            <br />
+            <button onClick={() => setRouterPath('/login')}>Go to Login Page</button>
         </div>
     )
 }

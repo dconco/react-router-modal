@@ -11,7 +11,7 @@ import animations from './Animate.module.css'
 const RouterContext = createContext()
 
 const useRouterPath = () => {
-    const [routerPath, setRouterPath] = useState(location.pathname)
+    const [routerPath, setRouterPath] = useState(window.location.pathname)
     return { routerPath, setRouterPath }
 }
 
@@ -70,7 +70,7 @@ const RouteModal = ({ path, component, animate }) => {
         }
 
         routerAnimate.forEach((val, index) => {
-            if (index == 0) {
+            if (index === 0) {
                 animateValue = val
             } else {
                 animateValue += val[0].toUpperCase() + val.substring(1, val.length)

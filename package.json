@@ -1,44 +1,53 @@
 {
-    "name": "react-router-modal",
-    "version": "1.0.0",
-    "description": "This is a custom react router built to navigates between pages but in one page, just to change the components rendering to the web, and update it with new components.",
-    "main": "index.jsx",
-    "scripts": {
-        "dev": "webpack serve --mode development",
-        "build": "webpack --mode production",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [
-        "react",
-        "router",
-        "modal",
-        "react-router",
-        "react-modal"
+  "name": "react-router-modal",
+  "version": "0.1.0",
+  "main": "index.jsx",
+  "description": "This is a custom react router built to navigates between pages but in one page, just to change the components rendering to the web, and update it with new components.",
+  "keywords": [
+    "react",
+    "router",
+    "modal",
+    "react-router",
+    "react-modal"
+  ],
+  "author": {
+    "name": "Dave Conco, Kig Emmanuel",
+    "email": "concodave@gmail.com",
+    "url": "https://github.com/dconco/react-router-modal"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4",
+    "use-between": "^1.3.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "author": {
-        "name": "Dave Conco, Kig Emmanuel",
-        "email": "concodave@gmail.com",
-        "url": "https://github.com/dconco/react-router-modal"
-    },
-    "license": "ISC",
-    "dependencies": {
-        "html-webpack-plugin": "^5.5.3",
-        "mini-css-extract-plugin": "^2.7.6",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "use-between": "^1.3.5"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.23.2",
-        "@babel/preset-env": "^7.23.2",
-        "@babel/preset-react": "^7.22.15",
-        "babel-loader": "^9.1.3",
-        "copy-webpack-plugin": "^11.0.0",
-        "css-loader": "^6.8.1",
-        "file-loader": "^6.2.0",
-        "style-loader": "^3.3.3",
-        "webpack": "^5.89.0",
-        "webpack-cli": "^5.1.4",
-        "webpack-dev-server": "^4.15.1"
-    }
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
