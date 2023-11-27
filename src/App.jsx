@@ -21,6 +21,8 @@ function App({ name }) {
         <div>
             <div style={styles.div}>
                 <h1 style={styles.h1}>Hello {name}, Welcome to React Router Modal Site</h1>
+                <br />
+                <h2 style={{ color: 'wheat' }}>Nice website</h2>
             </div>
 
             <br />
