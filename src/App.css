@@ -1,6 +1,6 @@
 button {
     cursor: pointer;
-    color: #fff;
+    color: #fff !important;
     font-weight: bold;
     display: flex;
     justify-content: center;

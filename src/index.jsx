@@ -2,7 +2,9 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import Router from './Router'
 import reportWebVitals from './reportWebVitals';
+
 import './index.css'
+import './components/styles/tailwind.css'
 
 const Root = createRoot(document.getElementById('root'))
 Root.render(

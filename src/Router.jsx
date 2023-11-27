@@ -4,7 +4,6 @@ import RouterModalProvider, { SwitchRoutes, RouteModal, routerFade, routerSlideL
 import App from './App'
 import Login from './pages/Login'
 
-
 // Render routes to Page
 const Router = () => {
     return (

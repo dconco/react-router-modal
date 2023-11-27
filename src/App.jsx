@@ -20,7 +20,7 @@ function App({ name }) {
     return (
         <div>
             <div style={styles.div}>
-                <h1 style={styles.h1}>Hello {name}, Welcome to React Router Modal Site</h1>
+                <h1 style={styles.h1} className='text-3xl font-bold underline'>Hello {name}, Welcome to React Router Modal Site</h1>
                 <br />
                 <h2 style={{ color: 'wheat' }}>Nice website</h2>
             </div>

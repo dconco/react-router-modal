@@ -19,7 +19,7 @@ function Login() {
     return (
         <div>
             <div style={styles.div}>
-                <h1 style={styles.h1}>Welcome Back!</h1>
+                <h1 style={styles.h1} className='text-2xl font-bold underline'>Welcome Back!</h1>
             </div>
 
             <br />
