@@ -26,7 +26,7 @@ function App({ name }) {
             </div>
 
             <br />
-            <button onClick={() => setRouterPath('/login')}>Go to Login Page</button>
+            <button onClick={() => setRouterPath('/login?name=dave')}>Go to Login Page</button>
         </div>
     )
 }

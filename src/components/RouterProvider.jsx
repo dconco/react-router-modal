@@ -6,7 +6,7 @@ import React, {
     useState
 } from "react"
 import { useBetween } from "use-between"
-import animations from './Animate.module.css'
+
 
 const RouterContext = createContext()
 
@@ -14,6 +14,7 @@ const useRouterPath = () => {
     const [routerPath, setRouterPath] = useState(window.location.pathname)
     return { routerPath, setRouterPath }
 }
+
 
 const RouterModalProvider = ({ children }) => {
     const { routerPath } = useBetween(useRouterPath)
@@ -24,6 +25,7 @@ const RouterModalProvider = ({ children }) => {
         </RouterContext.Provider>
     )
 }
+
 
 const useRouterModal = () => {
     const context = useContext(RouterContext)
@@ -38,9 +40,10 @@ const useRouter = () => {
     return { routerPath, setRouterPath }
 }
 
+
 /* switch routes depending on the giving path of child props */
 const SwitchRoutes = ({ children }) => {
-    const { routerPath } = useRouterModal()
+    const { routerPath } = useRouter()
     let component = <div />
 
     Children.forEach(children, child => {
@@ -48,119 +51,41 @@ const SwitchRoutes = ({ children }) => {
 
         // This function here, removes the front & back slashes in the url
         const routerPathFilter = (routerPath) ? routerPath.replace(/^\/+|\/+$/g, '') : routerPath
-        const pathFilter = (typeof path != 'object' && path) ? path.replace(/^\/+|\/+$/g, '') : path
+        const pathFilter = (path && typeof path != 'object') ? path.replace(/^\/+|\/+$/g, '') : path
 
-        if (typeof path == 'object' && path.includes(routerPath)) {
-            component = cloneElement(child)
+        // check if path is an object or array, and if routerPath value is included in the array
+        if (typeof path == 'object') {
+            /** loop through array of urls
+             * all val in the forEach, filter first and last parameters
+             * split params with ? in routerPath and get the first url and check if they matches the filtered val url
+             */
+            path.forEach(val => {
+                val = val && val.replace(/^\/+|\/+$/g, '')
+                const routerPathWithParam = (routerPathFilter && routerPathFilter.includes('?')) ? routerPathFilter.split('?', 1)[0] : routerPathFilter
+
+                if (val === routerPathWithParam) {
+                    component = cloneElement(child)
+                }
+            })
         }
-        else if (routerPathFilter === pathFilter || pathFilter === '*' || !path) {
-            component = cloneElement(child)
+        else {
+            // split the ? for params and check if link without params matches the path value
+            const routerPathWithParam = (routerPathFilter && routerPathFilter.includes('?')) ? routerPathFilter.split('?', 1)[0] : routerPathFilter
+
+            // check if pathFilter with slashes filter match the given path with filter or param or if it's a 404 page then it renders it, else it will return just an empty <div />
+            if (pathFilter === routerPathWithParam || path === '*' || !path) {
+                component = cloneElement(child)
+            }
         }
     })
+
     return component
 }
-
-const RouteModal = ({ path, component, animate }) => {
-    if (typeof animate == 'string') {
-        let routerAnimate = ['']
-        let animateValue = ''
-
-        if (animate !== true && animate !== undefined) {
-            routerAnimate = animate.includes('-') ? animate.split('-') : [animate]
-        }
-
-        routerAnimate.forEach((val, index) => {
-            if (index === 0) {
-                animateValue = val
-            } else {
-                animateValue += val[0].toUpperCase() + val.substring(1, val.length)
-            }
-        })
-
-        switch (animateValue) {
-            case 'routerFade':
-                animate = animations.routerFade
-                break;
-            case 'routerSlideLeft':
-                animate = animations.routerSlideLeft
-                break;
-            case 'routerSlideRight':
-                animate = animations.routerSlideRight
-                break;
-            case 'routerSlideUp':
-                animate = animations.routerSlideUp
-                break;
-            case 'routerSlideDown':
-                animate = animations.routerSlideDown
-                break;
-            case 'routerZoomIn':
-                animate = animations.routerZoomIn
-                break;
-            case 'routerZoomOut':
-                animate = animations.routerZoomOut
-                break;
-
-            default:
-                animate = animations.routerFade
-                break;
-        }
-    }
-    else {
-        let animateObject = animations.routerFade
-
-        if (animate !== true && animate !== undefined) {
-            animateObject = animate
-        }
-
-        animate = animateObject()
-    }
-
-    return (
-        <div key={Math.random()} className={animate}>
-            {component}
-        </div>
-    )
-}
-
-const Fade = () => animations.routerFade || 'router-fade'
-const SlideLeft = () => animations.routerSlideLeft || 'router-slide-left'
-const SlideRight = () => animations.routerSlideRight || 'router-slide-right'
-const SlideUp = () => animations.routerSlideUp || 'router-slide-up'
-const SlideDown = () => animations.routerSlideDown || 'router-slide-down'
-const ZoomIn = () => animations.routerZoomIn || 'router-zoom-in'
-const ZoomOut = () => animations.routerZoomOut || 'router-zoom-out'
-
-const Animation = {
-    routerFade: () => Fade(),
-    routerSlideLeft: () => SlideLeft(),
-    routerSlideRight: () => SlideRight(),
-    routerSlideUp: () => SlideUp(),
-    routerSlideDown: () => SlideDown(),
-    routerZoomIn: () => ZoomIn(),
-    routerZoomOut: () => ZoomOut()
-}
-
-const routerFade = () => Fade()
-const routerSlideLeft = () => SlideLeft()
-const routerSlideRight = () => SlideRight()
-const routerSlideUp = () => SlideUp()
-const routerSlideDown = () => SlideDown()
-const routerZoomIn = () => ZoomIn()
-const routerZoomOut = () => ZoomOut()
 
 
 export default RouterModalProvider
 export {
     useRouterModal,
     useRouter,
-    SwitchRoutes,
-    RouteModal,
-    Animation,
-    routerFade,
-    routerSlideLeft,
-    routerSlideRight,
-    routerSlideUp,
-    routerSlideDown,
-    routerZoomIn,
-    routerZoomOut
+    SwitchRoutes
 }
