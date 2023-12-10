@@ -29,6 +29,7 @@ const Router = () => {
                 {/* you can define multiple routes for a component by using array with lists of urls */}
                 <RouteModal path={['/', '/index']} component={<App name={'Dave'} />} animate={routerFade} />
                 <RouteModal path={'/login'} component={<Login />} animate={routerSlideLeft} />
+                <RouteModal path={'/login/:id'} component={<Login />} animate={routerSlideLeft} />
             </SwitchRoutes>
         </RouterModalProvider>
     )

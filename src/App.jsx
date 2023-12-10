@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRouter } from './components/RouterProvider'
+import { usePath, useRouter, useParam } from './components/RouterProvider'
 import './App.css'
 
 const styles = {
@@ -16,7 +16,8 @@ const styles = {
 
 function App({ name }) {
     const { setRouterPath } = useRouter() // set the route path to redirect to
-
+    alert(usePath())
+    
     return (
         <div>
             <div style={styles.div}>
@@ -26,7 +27,8 @@ function App({ name }) {
             </div>
 
             <br />
-            <button onClick={() => setRouterPath('/login?name=dave')}>Go to Login Page</button>
+            <button onClick={() => setRouterPath('/login/1/?name="davemm", age=100')} className='bg-sky-300 py-1 px-3 font-bold mx-3'>Go to Login Page</button>
+            <button onClick={() => setRouterPath('/login/100')} className='bg-sky-300 py-1 px-3 font-bold mx-3'>Go to Login Page</button>
         </div>
     )
 }

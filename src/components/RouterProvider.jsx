@@ -37,9 +37,26 @@ const useRouterModal = () => {
 
 const useRouter = () => {
     const { routerPath, setRouterPath } = useBetween(useRouterPath)
+    
     return { routerPath, setRouterPath }
 }
 
+const useParam = (param) => {
+    const { routerPath } = useRouter()
+    
+    if (!param) return 'Please specify a paramental'
+    
+    const rx = new RegExp(`[?, ]${param}=([^,]+)`)
+    const getparam = routerPath.match(rx)
+    
+    return getparam ? getparam[1] : null;
+}
+
+const usePath = () => {
+    const { routerPath } = useRouter()
+    
+    return routerPath.split('/')[2] ? routerPath.split('/')[2] : null
+}
 
 /* switch routes depending on the giving path of child props */
 const SwitchRoutes = ({ children }) => {
@@ -61,9 +78,16 @@ const SwitchRoutes = ({ children }) => {
              */
             path.forEach(val => {
                 val = val && val.replace(/^\/+|\/+$/g, '')
-                const routerPathWithParam = (routerPathFilter && routerPathFilter.includes('?')) ? routerPathFilter.split('?', 1)[0] : routerPathFilter
 
-                if (val === routerPathWithParam) {
+                const routerPathWithParam = (routerPathFilter && routerPathFilter.includes('?')) ? routerPathFilter.split('?', 1)[0] : routerPathFilter
+               
+                // check if the path contain id and match the requested path then render it else
+                if (val && val.includes(':') && routerPathWithParam.includes('/')) {
+                    if ( val.split('/')[0] === routerPathWithParam.split('/')[0]) {
+                        component = cloneElement(child)
+                    }
+                }
+                else if (val === routerPathWithParam) {
                     component = cloneElement(child)
                 }
             })
@@ -71,9 +95,19 @@ const SwitchRoutes = ({ children }) => {
         else {
             // split the ? for params and check if link without params matches the path value
             const routerPathWithParam = (routerPathFilter && routerPathFilter.includes('?')) ? routerPathFilter.split('?', 1)[0] : routerPathFilter
-
-            // check if pathFilter with slashes filter match the given path with filter or param or if it's a 404 page then it renders it, else it will return just an empty <div />
-            if (pathFilter === routerPathWithParam || path === '*' || !path) {
+            
+            // check if the path contain id and match the requested path then render it else
+            if (pathFilter && pathFilter.includes(':') && routerPathWithParam.includes('/')) {
+                if (pathFilter.split('/')[0] === routerPathWithParam.split('/')[0]) {
+                    component = cloneElement(child)
+                    
+                    // getting the path is obj
+                    // const obj = JSON.parse('{"' + pathFilter.split(':')[1] + '" : "' + routerPathWithParam.split('/')[1] + '"}')
+                    // console.log(obj)
+                }
+            } 
+            else if (pathFilter === routerPathWithParam || path === '*' || !path) {
+                // check if pathFilter with slashes filter match the given path with filter or param or if it's a 404 page then it renders it, else it will return just an empty <div />
                 component = cloneElement(child)
             }
         }
@@ -85,6 +119,8 @@ const SwitchRoutes = ({ children }) => {
 
 export default RouterModalProvider
 export {
+    usePath,
+    useParam,
     useRouterModal,
     useRouter,
     SwitchRoutes
